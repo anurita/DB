@@ -15,20 +15,6 @@ import java.sql.SQLException;
 
 public class EmployeeController {
     @FXML
-    private TextField empId;
-    @FXML
-    private TextArea address;
-    @FXML
-    private TextField name;
-    @FXML
-    private TextField nameText;
-    @FXML
-    private TextField password;
-    @FXML
-    private TextField salary;
-    @FXML
-    private TextField SSN;
-    @FXML
     private TableView employeeTable;
     @FXML
     private TableColumn<Employee, Integer>  empIdColumn;
@@ -44,14 +30,22 @@ public class EmployeeController {
     private TableColumn<Employee, String> empHireDateColumn;
     @FXML
     private TableColumn<Employee, Integer> empSSNColumn;
+    @FXML
+    private TextField txtName;
+    @FXML
+    private TextArea txtAddr;
+    @FXML
+    private TextField txtSSN;
+    @FXML
+    private TextField txtSalary;
+    @FXML
+    private TextField txtDate;
 
 
     @FXML
     private void searchEmployees(ActionEvent actionEvent) throws Exception{
         try {
-            //Get all Employees information
             ObservableList<Employee> empData = EmployeeUtil.searchEmployees();
-
             populateEmployees(empData);
         } catch (SQLException e){
 
@@ -60,6 +54,11 @@ public class EmployeeController {
     }
 
 
+    @FXML
+    private void addEmployees(ActionEvent actionEvent) throws Exception{
+        EmployeeUtil.addEmployee(txtName.getText(), txtAddr.getText(), Integer.parseInt(txtSalary.getText()),
+                Integer.parseInt(txtSSN.getText()), txtDate.getText());
+    }
     @FXML
     private void initialize () {
 
@@ -71,13 +70,6 @@ public class EmployeeController {
         empHireDateColumn.setCellValueFactory(cellData -> cellData.getValue().dateOfJoiningProperty());
     }
 
-    //Populate Employee
-    @FXML
-    private void populateEmployee (Employee emp) throws ClassNotFoundException {
-
-
-    }
-        //Populate Employees for TableView
     @FXML
     private void populateEmployees (ObservableList<Employee> empData) throws ClassNotFoundException {
         //Set items to the employeeTable

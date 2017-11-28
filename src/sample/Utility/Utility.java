@@ -1,5 +1,7 @@
-package sample;
+package sample.Utility;
+
 import com.sun.rowset.CachedRowSetImpl;
+
 import java.sql.*;
 
 public class Utility {
@@ -62,24 +64,52 @@ public class Utility {
         return crs;
     }
 
-    public static void update(String sqlStmt) throws SQLException, ClassNotFoundException {
+    public static void update(String sqlStmt) throws Exception {
 
         Statement stmt = null;
         try {
-
             connect();
             stmt = connection.createStatement();
             stmt.executeUpdate(sqlStmt);
-        } catch (SQLException e) {
+        } catch (Exception e) {
 
             throw e;
         } finally {
             if (stmt != null) {
-                //Close statement
+
                 stmt.close();
             }
-            //Close connection
             disconnect();
         }
+    }
+
+    public static ResultSet executeProcedure(String query) throws Exception{
+        CallableStatement stmt = null;
+        ResultSet resultSet = null;
+        CachedRowSetImpl crs = null;
+        try {
+            connect();
+            stmt = connection.prepareCall(query);
+            resultSet = stmt.executeQuery(query);
+            crs = new CachedRowSetImpl();
+            crs.populate(resultSet);
+        } catch (SQLException e) {
+
+            throw e;
+        } finally {
+            if (resultSet != null) {
+
+                resultSet.close();
+            }
+            if (stmt != null) {
+                //Close Statement
+                stmt.close();
+            }
+
+            disconnect();
+        }
+
+        return crs;
+
     }
 }

@@ -1,6 +1,8 @@
 package sample.models;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 import java.util.Date;
@@ -15,6 +17,16 @@ public class Employee {
     StringProperty dateOfJoining;
     IntegerProperty salary;
     IntegerProperty SSN;
+
+    public Employee() {
+        this.employeeId = new SimpleIntegerProperty();
+        this.name = new SimpleStringProperty();
+        this.address = new SimpleStringProperty();
+        this.password = new SimpleStringProperty();
+        this.dateOfJoining = new SimpleStringProperty();
+        this.salary = new SimpleIntegerProperty();
+        this.SSN = new SimpleIntegerProperty();
+    }
 
     public int getEmployeeId() {
         return employeeId.get();
