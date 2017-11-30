@@ -19,10 +19,12 @@
               <TableColumn fx:id="empSalaryColumn" prefWidth="79.0" text="Salary" />
               <TableColumn fx:id="empSSNColumn" prefWidth="73.0" text="SSN" />
               <TableColumn fx:id="empHireDateColumn" prefWidth="93.0" text="Hire Date" />
+              <TableColumn fx:id="empRoleColumn" prefWidth="93.0" text="Role" />
+              <TableColumn fx:id="empPasswordColumn" prefWidth="93.0" text="Role" />
           </columns>
       </TableView>
 
-      <Button fx:id="btnShow" layoutX="44.0" layoutY="301.0" mnemonicParsing="false" onAction="#searchEmployees" text="Show" />
+      <Button fx:id="btnShow" layoutX="44.0" layoutY="301.0" mnemonicParsing="false" onAction="#searchEmployees" text="Refresh" />
        <Label layoutX="59.0" layoutY="378.0" prefHeight="30.0" prefWidth="68.0" text="Name" />
        <TextField fx:id="txtName" layoutX="136.0" layoutY="374.0" promptText="Enter Name" />
 
@@ -35,6 +37,10 @@
       <Label layoutX="418.0" layoutY="374.0" prefHeight="30.0" prefWidth="68.0" text="SSN" />
       <Label layoutX="418.0" layoutY="446.0" prefHeight="30.0" prefWidth="68.0" text="Salary" />
       <Label layoutX="418.0" layoutY="512.0" prefHeight="39.0" prefWidth="95.0" text="Hire Date" />
+      <TextField fx:id="txtRole" layoutX="976.0" layoutY="374.0" prefHeight="30.0" prefWidth="134.0" promptText="D/N/R" />
+      <Label layoutX="868.0" layoutY="380.0" prefHeight="30.0" prefWidth="84.0" text="Role" />
+      <Button fx:id="btnDel" layoutX="670.0" layoutY="138.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="134.0" text="Delete" />
+      <TextField fx:id="txtIdDel" layoutX="664.0" layoutY="68.0" promptText="Enter EmpId to delete" />
 
    </children>
 </AnchorPane>

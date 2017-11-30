@@ -30,24 +30,30 @@ public class EmployeeUtil {
             emp.setSalary(rs.getInt("Salary"));
             emp.setDateOfJoining(rs.getString("Date_Of_Joining"));
             emp.setPassword(rs.getString("Password"));
+            emp.setRole(rs.getString("role"));
             empList.add(emp);
         }
         return empList;
     }
 
-    public static void addEmployee(String name, String addr, Integer salary, Integer SSN, String date) throws Exception {
-        String query = "{ call Hospital_Managment_System.GetMaxId()}";
-
-        //String insertStmt = "Insert into Employee(Name, Address, Salary, SSN, Date_Of_Joining) values (" +
-          //      name + "," + addr + "," + salary + "," + SSN + "," + date;
+    public static void addEmployee(String name, String addr, Integer salary, Integer SSN, String date, String role) throws Exception {
+        String query = "{call Hospital_Managment_System.addEmployee(?,?,?,?,?,?)}";
         try {
-           // Utility.update(insertStmt);
-
-            ResultSet id = Utility.executeProcedure(query);
-            int i = 1;
+           boolean result = Utility.executeProcedure(query,name ,addr,SSN ,salary ,date ,role);
 
         } catch (Exception e) {
             throw e;
         }
     }
+
+    public static void deleteEmployee(Integer empId) throws Exception {
+        String query = "Delete from Employee where EmployeeId = " + empId;
+        try {
+            ResultSet rs = Utility.execute(query);
+
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
 }
