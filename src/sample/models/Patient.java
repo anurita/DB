@@ -1,6 +1,8 @@
 package sample.models;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
@@ -12,7 +14,16 @@ public class Patient {
     StringProperty name;
     StringProperty address;
     IntegerProperty age;
+    IntegerProperty phone;
 
+
+    public Patient() {
+        this.patientId = new SimpleIntegerProperty();
+        this.name = new SimpleStringProperty();
+        this.address = new SimpleStringProperty();
+        this.age = new SimpleIntegerProperty();
+        this.phone = new SimpleIntegerProperty();
+    }
     public int getPatientId() {
         return patientId.get();
     }
@@ -73,6 +84,6 @@ public class Patient {
         this.phone.set(phone);
     }
 
-    IntegerProperty phone;
+
 
 }
