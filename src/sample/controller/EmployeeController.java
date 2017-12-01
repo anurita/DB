@@ -1,15 +1,15 @@
 package sample.controller;
 
+import javafx.beans.property.IntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import sample.models.Employee;
 import sample.models.EmployeeUtil;
+
+import javax.xml.soap.Text;
 import java.sql.Date;
 import java.sql.SQLException;
 
@@ -31,6 +31,8 @@ public class EmployeeController {
     @FXML
     private TableColumn<Employee, Integer> empSSNColumn;
     @FXML
+    private TableColumn<Employee, String> empRoleColumn;
+    @FXML
     private TextField txtName;
     @FXML
     private TextArea txtAddr;
@@ -40,7 +42,10 @@ public class EmployeeController {
     private TextField txtSalary;
     @FXML
     private TextField txtDate;
-
+    @FXML
+    private TextField txtRole;
+    @FXML
+    private TextField txtIdDel;
 
     @FXML
     private void searchEmployees(ActionEvent actionEvent) throws Exception{
@@ -53,11 +58,10 @@ public class EmployeeController {
         }
     }
 
-
     @FXML
     private void addEmployees(ActionEvent actionEvent) throws Exception{
         EmployeeUtil.addEmployee(txtName.getText(), txtAddr.getText(), Integer.parseInt(txtSalary.getText()),
-                Integer.parseInt(txtSSN.getText()), txtDate.getText());
+                Integer.parseInt(txtSSN.getText()), txtDate.getText(), txtRole.getText());
     }
     @FXML
     private void initialize () {
@@ -68,6 +72,9 @@ public class EmployeeController {
         empSalaryColumn.setCellValueFactory(cellData -> cellData.getValue().salaryProperty().asObject());
         empSSNColumn.setCellValueFactory(cellData -> cellData.getValue().SSNProperty().asObject());
         empHireDateColumn.setCellValueFactory(cellData -> cellData.getValue().dateOfJoiningProperty());
+        empRoleColumn.setCellValueFactory(cellData -> cellData.getValue().roleProperty());
+        empPasswordColumn.setCellValueFactory(cellData -> cellData.getValue().passwordProperty());
+
     }
 
     @FXML
@@ -76,5 +83,11 @@ public class EmployeeController {
         employeeTable.setItems(empData);
     }
 
+
+    @FXML
+    private void deleteEmployee(ActionEvent actionEvent) throws Exception{
+        EmployeeUtil.addEmployee(txtName.getText(), txtAddr.getText(), Integer.parseInt(txtSalary.getText()),
+                Integer.parseInt(txtSSN.getText()), txtDate.getText(), txtRole.getText());
+    }
 
 }

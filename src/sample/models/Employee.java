@@ -17,6 +17,7 @@ public class Employee {
     StringProperty dateOfJoining;
     IntegerProperty salary;
     IntegerProperty SSN;
+    StringProperty role;
 
     public Employee() {
         this.employeeId = new SimpleIntegerProperty();
@@ -26,6 +27,7 @@ public class Employee {
         this.dateOfJoining = new SimpleStringProperty();
         this.salary = new SimpleIntegerProperty();
         this.SSN = new SimpleIntegerProperty();
+        this.role = new SimpleStringProperty();
     }
 
     public int getEmployeeId() {
@@ -111,4 +113,17 @@ public class Employee {
     public void setSSN(int SSN) {
         this.SSN.set(SSN);
     }
+
+    public String getRole() {
+        return role.get();
+    }
+
+    public StringProperty roleProperty() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role.set(role);
+    }
+
 }
