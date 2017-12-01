@@ -43,7 +43,6 @@ public class RootLayoutController {
                     loader.setLocation(Main.class.getResource("view/AdministratorView.fxml"));
                     primaryStage.setTitle("Employee Details");
                     AnchorPane employeeView = (AnchorPane) loader.load();
-
                     Scene scene = new Scene(employeeView); //We are sending rootLayout to the Scene.
                     primaryStage.setScene(scene);
                     primaryStage.show();

@@ -83,16 +83,21 @@ public class Utility {
         }
     }
 
-    public static ResultSet executeProcedure(String query) throws Exception{
+    public static boolean executeProcedure(String query, String name, String addr, Integer ssn, Integer salary, String dateJoin, String role) throws Exception{
         CallableStatement stmt = null;
         ResultSet resultSet = null;
         CachedRowSetImpl crs = null;
         try {
             connect();
             stmt = connection.prepareCall(query);
-            resultSet = stmt.executeQuery(query);
-            crs = new CachedRowSetImpl();
-            crs.populate(resultSet);
+            stmt.setString(1, name);
+            stmt.setString(2, addr);
+            stmt.setInt(3, ssn);
+            stmt.setInt(4, salary);
+            stmt.setString(5, dateJoin);
+            stmt.setString(6, role);
+            boolean result = stmt.execute();
+            return result;
         } catch (SQLException e) {
 
             throw e;
@@ -108,8 +113,5 @@ public class Utility {
 
             disconnect();
         }
-
-        return crs;
-
     }
 }
