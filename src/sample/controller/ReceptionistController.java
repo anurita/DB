@@ -7,12 +7,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import sample.models.Doctor;
 import sample.models.Patient;
 import sample.models.Receptionist;
-
-
-import java.sql.Date;
 import java.sql.SQLException;
 public class ReceptionistController {
     @FXML
