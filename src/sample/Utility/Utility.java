@@ -6,10 +6,10 @@ import java.sql.*;
 
 public class Utility {
 
-    private static String url = "";
-    private static String userName = "";
-    private static String password = "";
-    private static String dbName = "";
+    private static String url = "jdbc:mysql://northvirginia-mysql-instance1.celydv4hllua.us-east-1.rds.amazonaws.com:3306/";
+    private static String userName = "Administrator";
+    private static String password = "mydatabase";
+    private static String dbName = "Hospital_Managment_System";
     private static String driver = "com.mysql.jdbc.Driver";
     private static Connection connection = null;
 
@@ -96,6 +96,36 @@ public class Utility {
             stmt.setInt(4, salary);
             stmt.setString(5, dateJoin);
             stmt.setString(6, role);
+            boolean result = stmt.execute();
+            return result;
+        } catch (SQLException e) {
+
+            throw e;
+        } finally {
+            if (resultSet != null) {
+
+                resultSet.close();
+            }
+            if (stmt != null) {
+                //Close Statement
+                stmt.close();
+            }
+
+            disconnect();
+        }
+    }
+    public static boolean executeProc(String query, String name, String addr, Integer age, Integer Phone, Integer DoctorId) throws Exception{
+        CallableStatement stmt = null;
+        ResultSet resultSet = null;
+        CachedRowSetImpl crs = null;
+        try {
+            connect();
+            stmt = connection.prepareCall(query);
+            stmt.setString(1, name);
+            stmt.setString(2, addr);
+            stmt.setInt(3, age);
+            stmt.setInt(4, Phone);
+            stmt.setInt(5, DoctorId);
             boolean result = stmt.execute();
             return result;
         } catch (SQLException e) {
