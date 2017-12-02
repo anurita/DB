@@ -1,23 +1,18 @@
 package sample.controller;
 
-        import javafx.collections.ObservableList;
-        import javafx.event.ActionEvent;
-        import javafx.fxml.FXML;
-        import javafx.fxml.FXMLLoader;
-        import javafx.scene.Scene;
-        import javafx.scene.control.TableColumn;
-        import javafx.scene.control.TableView;
-        import javafx.scene.control.TextField;
-        import javafx.scene.layout.AnchorPane;
-        import javafx.stage.Stage;
-        import sample.Main;
-        import sample.Utility.Utility;
-        import sample.models.DoctorPatient;
-        import sample.models.Employee;
-        import sample.models.Patient;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import sample.Utility.Utility;
+import sample.models.DoctorPatient;
 
-        import java.sql.ResultSet;
-        import java.sql.SQLException;
+import java.sql.ResultSet;
 
 /**
  * Created by anu on 11/27/2017.
@@ -25,69 +20,71 @@ package sample.controller;
 public class DoctorPatientController {
 
     @FXML
-    private TextField patientId;
+    private TextField txtPatId;
     @FXML
-    private TextField diagnosis;
+    private TextField txtDiag;
 
     @FXML
     private TableView patientDiagnosisTable;
     @FXML
     private TableColumn<DoctorPatient, Integer> patIdColumn;
     @FXML
-    private TableColumn<DoctorPatient, String>  diagColumn;
+    private TableColumn<DoctorPatient, String> diagColumn;
     private Stage primaryStage = new Stage();
     @FXML
-    private void initialize()
-    {
+    private Label lblDocId;
+
+    @FXML
+    private void initialize() {
         patIdColumn.setCellValueFactory(cellData -> cellData.getValue().PatientIdProperty().asObject());
         diagColumn.setCellValueFactory(cellData -> cellData.getValue().DiagnosisProperty());
 
     }
 
     @FXML
-    private void searchPatient(ActionEvent actionEvent) throws Exception{
+    private void showPatient(ActionEvent actionEvent) throws Exception {
         try {
-            //ObservableList<DoctorPatient> patData = PatientUtil.searchPatients();
-            //populatePatients(patData);
-        } catch (Exception e){
+            String selectStmt = "SELECT * FROM Doctor_Patient where DoctorId = " + Integer.parseInt(lblDocId.getText());
+            ResultSet patients = Utility.execute(selectStmt);
+            ObservableList<DoctorPatient> patList = getPatientList(patients);
+            populatePatients(patList);
+
+
+        } catch (Exception e) {
 
             throw e;
         }
     }
 
     @FXML
-    private void ViewPatient()
-    {
+    private void updatePatient() {
         try {
-            Integer PatientId = Integer.parseInt(patientId.getText());
-            String Diagnosis = diagnosis.getText();
-            String stmt = "Select * from DoctorPatient";
-            ResultSet rs = Utility.execute(stmt);
-                if (rs.isBeforeFirst()) {
-                    FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(Main.class.getResource("view/DoctorView.fxml"));
-                    primaryStage.setTitle("Doctor Details");
-                    AnchorPane doctorView = (AnchorPane) loader.load();
+            Integer patientId = Integer.parseInt(txtPatId.getText());
+            String diagnosis = txtDiag.getText();
+            String stmt = "Update Doctor_Patient set Diagnosis= '" + diagnosis + "' where PatientId = " + patientId;
+            Utility.update(stmt);
 
-                    Scene scene = new Scene(doctorView); //We are sending rootLayout to the Scene.
-                    primaryStage.setScene(scene);
-                    primaryStage.show();
-                }
 
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    @FXML
-        private void updatePatient(ActionEvent actionEvent) throws Exception{
-           // PatientUtil.updatePatient(txtPatId.getText(), txtDig.getText());
-        }
 
-        @FXML
-            private void populatePatients (ObservableList<DoctorPatient> docData) throws ClassNotFoundException {
-                //Set items to the DoctorPatientTable
-            patientDiagnosisTable.setItems(docData);
-            }
+    @FXML
+    private void populatePatients(ObservableList<DoctorPatient> patData) throws ClassNotFoundException {
+        //Set items to the DoctorPatientTable
+        patientDiagnosisTable.setItems(patData);
+    }
+
+    private static ObservableList<DoctorPatient> getPatientList(ResultSet rs) throws Exception {
+        ObservableList<DoctorPatient> patList = FXCollections.observableArrayList();
+        while (rs.next()) {
+            DoctorPatient pat = new DoctorPatient();
+            pat.setPatientId(rs.getInt("PatientId"));
+            pat.setDiagnosis(rs.getString("Diagnosis"));
+            patList.add(pat);
+        }
+        return patList;
+    }
+
 }

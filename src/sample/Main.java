@@ -18,7 +18,7 @@ public class Main extends Application {
             this.primaryStage = primaryStage;
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("view/RootLayout.fxml"));
-            primaryStage.setTitle("Employee Page");
+            primaryStage.setTitle("Login Page");
             AnchorPane loginView = (AnchorPane) loader.load();
 
             Scene scene = new Scene(loginView); //We are sending rootLayout to the Scene.
