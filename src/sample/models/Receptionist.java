@@ -29,26 +29,27 @@ public class Receptionist {
             pat.setAddress(rs.getString("Address"));
             pat.setAge(rs.getInt("age"));
             pat.setPhone(rs.getInt("Phone"));
-
             patList.add(pat);
         }
         return patList;
     }
 
-    public static void addPatient(String name, String addr, Integer age, Integer Phone) throws Exception {
-        String query = "{ call Hospital_Managment_System.GetMaxId()}";
+    public static void addPatient(String name, String addr, Integer age, Integer Phone, Integer DoctorId) throws Exception {
+        String query = "{call Hospital_Managment_System.addPatient(?,?,?,?,?)}";
 
 
         try {
 
 
-            ResultSet id = Utility.executeProcedure(query);
+            Utility.executeProc(query,name,addr,age,Phone,DoctorId);
             int i = 1;
 
         } catch (Exception e) {
             throw e;
         }
     }
+
+
 }
 
 

@@ -7,6 +7,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import sample.models.Doctor;
 import sample.models.Patient;
 import sample.models.Receptionist;
 
@@ -26,6 +27,7 @@ public class ReceptionistController {
     private TableColumn<Patient, String> patAddressColumn;
     @FXML
     private TableColumn<Patient, Integer> patPhoneColumn;
+
     @FXML
     private TextField txtName;
     @FXML
@@ -34,22 +36,25 @@ public class ReceptionistController {
     private TextField txtPhone;
     @FXML
     private TextField txtage;
+    @FXML
+    private TextField txtDoctorId;
 
     @FXML
     private void searchPatients(ActionEvent actionEvent) throws Exception{
         try {
             ObservableList<Patient> patData = Receptionist.searchPatients();
-            populatePatients(patData);
+            populatePatient(patData);
         } catch (SQLException e){
 
             throw e;
         }
     }
     @FXML
-    private void addPatients(ActionEvent actionEvent) throws Exception{
+    private void addPatient(ActionEvent actionEvent) throws Exception{
         Receptionist.addPatient(txtName.getText(), txtAddr.getText(), Integer.parseInt(txtage.getText()),
-                Integer.parseInt(txtPhone.getText()));
+                Integer.parseInt(txtPhone.getText()),Integer.parseInt(txtDoctorId.getText()));
     }
+
     @FXML
     private void initialize () {
 
@@ -61,7 +66,7 @@ public class ReceptionistController {
     }
 
     @FXML
-    private void populatePatients (ObservableList<Patient> patData) throws ClassNotFoundException {
+    private void populatePatient (ObservableList<Patient> patData) throws ClassNotFoundException {
         //Set items to the patientTable
         patientTable.setItems(patData);
     }

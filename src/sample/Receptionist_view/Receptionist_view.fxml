@@ -16,8 +16,9 @@
                 <TableColumn fx:id="patIdColumn" prefWidth="57.0" text="Id" />
                 <TableColumn fx:id="patNameColumn" prefWidth="75.0" text="Name" />
                 <TableColumn fx:id="patAddressColumn" prefWidth="73.0" text="Address" />
-                <TableColumn fx:id="patageColumn" prefWidth="79.0" text="Age" />
-                <TableColumn fx:id="patPhoneColumn" prefWidth="73.0" text="Phone" />
+                <TableColumn fx:id="patageColumn" prefWidth="102.0" text="Age" />
+                <TableColumn fx:id="patPhoneColumn" prefWidth="178.0" text="Phone" />
+
 
             </columns>
         </TableView>
@@ -26,14 +27,16 @@
         <Label layoutX="59.0" layoutY="378.0" prefHeight="30.0" prefWidth="68.0" text="Name" />
         <TextField fx:id="txtName" layoutX="136.0" layoutY="374.0" promptText="Enter Name" />
 
-        <Button fx:id="btnAdd" layoutX="642.0" layoutY="599.0" mnemonicParsing="false" onAction="#addPatients" prefHeight="39.0" prefWidth="134.0" text="Add" />
+        <Button fx:id="btnAdd" layoutX="642.0" layoutY="599.0" mnemonicParsing="false" onAction="#addPatient" prefHeight="39.0" prefWidth="134.0" text="Add" />
         <TextArea fx:id="txtAddr" layoutX="136.0" layoutY="426.0" prefHeight="200.0" prefWidth="200.0" promptText="Enter Address" />
         <TextField fx:id="txtage" layoutX="566.0" layoutY="378.0" promptText="Enter Age" />
         <TextField fx:id="txtPhone" layoutX="566.0" layoutY="441.0" promptText="Enter Phone" />
+        <TextField fx:id="txtDoctorId" layoutX="566.0" layoutY="556.0" promptText="Enter DoctorId" />
 
         <Label layoutX="59.0" layoutY="430.0" prefHeight="30.0" prefWidth="68.0" text="Address" />
         <Label layoutX="418.0" layoutY="374.0" prefHeight="30.0" prefWidth="68.0" text="Age" />
         <Label layoutX="418.0" layoutY="446.0" prefHeight="30.0" prefWidth="68.0" text="Phone" />
+        <Label layoutX="418.0" layoutY="556.0" prefHeight="30.0" prefWidth="68.0" text="DoctorId" />
 
 
     </children>
