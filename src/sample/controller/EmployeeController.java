@@ -1,7 +1,5 @@
 package sample.controller;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,8 +7,6 @@ import javafx.scene.control.*;
 import sample.models.Employee;
 import sample.models.EmployeeUtil;
 
-import javax.xml.soap.Text;
-import java.sql.Date;
 import java.sql.SQLException;
 
 public class EmployeeController {
@@ -33,6 +29,8 @@ public class EmployeeController {
     @FXML
     private TableColumn<Employee, String> empRoleColumn;
     @FXML
+    private TableColumn<Employee, String> empPhoneColumn;
+    @FXML
     private TextField txtName;
     @FXML
     private TextArea txtAddr;
@@ -48,6 +46,8 @@ public class EmployeeController {
     private TextField txtIdDel;
 
     @FXML
+    private TextField txtPhone;
+    @FXML
     private void searchEmployees(ActionEvent actionEvent) throws Exception{
         try {
             ObservableList<Employee> empData = EmployeeUtil.searchEmployees();
@@ -61,7 +61,7 @@ public class EmployeeController {
     @FXML
     private void addEmployees(ActionEvent actionEvent) throws Exception{
         EmployeeUtil.addEmployee(txtName.getText(), txtAddr.getText(), Integer.parseInt(txtSalary.getText()),
-                Integer.parseInt(txtSSN.getText()), txtDate.getText(), txtRole.getText());
+                Integer.parseInt(txtSSN.getText()), txtDate.getText(), txtRole.getText(), txtPhone.getText());
     }
     @FXML
     private void initialize () {
@@ -74,7 +74,7 @@ public class EmployeeController {
         empHireDateColumn.setCellValueFactory(cellData -> cellData.getValue().dateOfJoiningProperty());
         empRoleColumn.setCellValueFactory(cellData -> cellData.getValue().roleProperty());
         empPasswordColumn.setCellValueFactory(cellData -> cellData.getValue().passwordProperty());
-
+        empPhoneColumn.setCellValueFactory(cellData -> cellData.getValue().phoneProperty());
     }
 
     @FXML
@@ -86,8 +86,7 @@ public class EmployeeController {
 
     @FXML
     private void deleteEmployee(ActionEvent actionEvent) throws Exception{
-        EmployeeUtil.addEmployee(txtName.getText(), txtAddr.getText(), Integer.parseInt(txtSalary.getText()),
-                Integer.parseInt(txtSSN.getText()), txtDate.getText(), txtRole.getText());
+        EmployeeUtil.deleteEmployee(Integer.parseInt(txtIdDel.getText()));
     }
 
 }

@@ -8,39 +8,42 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="679.0" prefWidth="1131.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.EmployeeController">
+<AnchorPane prefHeight="738.0" prefWidth="1114.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.EmployeeController">
    <children>
 
-      <TableView fx:id="employeeTable" layoutX="44.0" layoutY="40.0" prefHeight="234.0" prefWidth="486.0">
+      <TableView fx:id="employeeTable" layoutX="44.0" layoutY="40.0" prefHeight="318.0" prefWidth="768.0">
           <columns>
               <TableColumn fx:id="empIdColumn" prefWidth="57.0" text="Id" />
               <TableColumn fx:id="empNameColumn" prefWidth="75.0" text="Name" />
               <TableColumn fx:id="empAddressColumn" prefWidth="73.0" text="Address" />
+              <TableColumn fx:id="empPhoneColumn" prefWidth="93.0" text="Phone" />
               <TableColumn fx:id="empSalaryColumn" prefWidth="79.0" text="Salary" />
               <TableColumn fx:id="empSSNColumn" prefWidth="73.0" text="SSN" />
               <TableColumn fx:id="empHireDateColumn" prefWidth="93.0" text="Hire Date" />
               <TableColumn fx:id="empRoleColumn" prefWidth="93.0" text="Role" />
-              <TableColumn fx:id="empPasswordColumn" prefWidth="93.0" text="Role" />
+              <TableColumn fx:id="empPasswordColumn" prefWidth="93.0" text="Password" />
           </columns>
       </TableView>
 
-      <Button fx:id="btnShow" layoutX="44.0" layoutY="301.0" mnemonicParsing="false" onAction="#searchEmployees" text="Refresh" />
-       <Label layoutX="59.0" layoutY="378.0" prefHeight="30.0" prefWidth="68.0" text="Name" />
-       <TextField fx:id="txtName" layoutX="136.0" layoutY="374.0" promptText="Enter Name" />
+      <Button fx:id="btnShow" layoutX="846.0" layoutY="246.0" mnemonicParsing="false" onAction="#searchEmployees" text="Refresh" />
+       <Label layoutX="59.0" layoutY="418.0" prefHeight="30.0" prefWidth="68.0" text="Name" />
+       <TextField fx:id="txtName" layoutX="148.0" layoutY="413.0" promptText="Enter Name" />
 
-      <Button fx:id="btnAdd" layoutX="642.0" layoutY="599.0" mnemonicParsing="false" onAction="#addEmployees" prefHeight="39.0" prefWidth="134.0" text="Add" />
-      <TextArea fx:id="txtAddr" layoutX="136.0" layoutY="426.0" prefHeight="200.0" prefWidth="200.0" promptText="Enter Address" />
-      <TextField fx:id="txtSSN" layoutX="566.0" layoutY="378.0" promptText="Enter SSN" />
-      <TextField fx:id="txtSalary" layoutX="566.0" layoutY="441.0" promptText="Enter Salary" />
-      <TextField fx:id="txtDate" layoutX="566.0" layoutY="507.0" promptText="Enter Hire Date" />
-      <Label layoutX="59.0" layoutY="430.0" prefHeight="30.0" prefWidth="68.0" text="Address" />
-      <Label layoutX="418.0" layoutY="374.0" prefHeight="30.0" prefWidth="68.0" text="SSN" />
-      <Label layoutX="418.0" layoutY="446.0" prefHeight="30.0" prefWidth="68.0" text="Salary" />
-      <Label layoutX="418.0" layoutY="512.0" prefHeight="39.0" prefWidth="95.0" text="Hire Date" />
-      <TextField fx:id="txtRole" layoutX="976.0" layoutY="374.0" prefHeight="30.0" prefWidth="134.0" promptText="D/N/R" />
-      <Label layoutX="868.0" layoutY="380.0" prefHeight="30.0" prefWidth="84.0" text="Role" />
-      <Button fx:id="btnDel" layoutX="670.0" layoutY="138.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="134.0" text="Delete" />
-      <TextField fx:id="txtIdDel" layoutX="664.0" layoutY="68.0" promptText="Enter EmpId to delete" />
+      <Button fx:id="btnAdd" layoutX="885.0" layoutY="571.0" mnemonicParsing="false" onAction="#addEmployees" prefHeight="39.0" prefWidth="134.0" text="Add" />
+      <TextArea fx:id="txtAddr" layoutX="148.0" layoutY="519.0" prefHeight="200.0" prefWidth="200.0" promptText="Enter Address" />
+      <TextField fx:id="txtSSN" layoutX="533.0" layoutY="551.0" promptText="Enter SSN" />
+      <TextField fx:id="txtSalary" layoutX="533.0" layoutY="610.0" promptText="Enter Salary" />
+      <TextField fx:id="txtDate" layoutX="840.0" layoutY="413.0" promptText="Enter Hire Date" />
+      <Label layoutX="59.0" layoutY="531.0" prefHeight="30.0" prefWidth="68.0" text="Address" />
+      <Label layoutX="394.0" layoutY="551.0" prefHeight="30.0" prefWidth="68.0" text="SSN" />
+      <Label layoutX="394.0" layoutY="619.0" prefHeight="30.0" prefWidth="68.0" text="Salary" />
+      <Label layoutX="740.0" layoutY="413.0" prefHeight="39.0" prefWidth="95.0" text="Hire Date" />
+      <TextField fx:id="txtRole" layoutX="523.0" layoutY="414.0" prefHeight="30.0" prefWidth="134.0" promptText="D/N/R" />
+      <Label layoutX="420.0" layoutY="418.0" prefHeight="30.0" prefWidth="84.0" text="Role" />
+      <Button fx:id="btnDel" layoutX="907.0" layoutY="94.0" mnemonicParsing="false" onAction="#deleteEmployee" prefHeight="39.0" prefWidth="134.0" text="Delete" />
+      <TextField fx:id="txtIdDel" layoutX="862.0" layoutY="40.0" promptText="Enter EmpId to delete" />
+      <TextField fx:id="txtPhone" layoutX="504.0" layoutY="490.0" promptText="Enter Phone" />
+      <Label layoutX="407.0" layoutY="496.0" text="Phone" />
 
    </children>
 </AnchorPane>

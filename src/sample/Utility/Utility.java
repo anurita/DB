@@ -83,7 +83,7 @@ public class Utility {
         }
     }
 
-    public static boolean executeProcedure(String query, String name, String addr, Integer ssn, Integer salary, String dateJoin, String role) throws Exception{
+    public static boolean executeProcedure(String query, String name, String addr, Integer ssn, Integer salary, String dateJoin, String role, String phone) throws Exception{
         CallableStatement stmt = null;
         ResultSet resultSet = null;
         CachedRowSetImpl crs = null;
@@ -96,6 +96,7 @@ public class Utility {
             stmt.setInt(4, salary);
             stmt.setString(5, dateJoin);
             stmt.setString(6, role);
+            stmt.setString(7, phone);
             boolean result = stmt.execute();
             return result;
         } catch (SQLException e) {

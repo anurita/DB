@@ -17,7 +17,7 @@ public class Main extends Application {
         try {
             this.primaryStage = primaryStage;
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("Receptionist_view/Receptionist_view.fxml"));
+            loader.setLocation(Main.class.getResource("view/RootLayout.fxml"));
             primaryStage.setTitle("Login Page");
             AnchorPane loginView = (AnchorPane) loader.load();
 
@@ -29,7 +29,6 @@ public class Main extends Application {
         {
             e.printStackTrace();
         }
-
     }
 
 

@@ -36,10 +36,10 @@ public class EmployeeUtil {
         return empList;
     }
 
-    public static void addEmployee(String name, String addr, Integer salary, Integer SSN, String date, String role) throws Exception {
-        String query = "{call Hospital_Managment_System.addEmployee(?,?,?,?,?,?)}";
+    public static void addEmployee(String name, String addr, Integer salary, Integer SSN, String date, String role, String phone) throws Exception {
+        String query = "{call Hospital_Managment_System.addEmployee(?,?,?,?,?,?,?)}";
         try {
-           boolean result = Utility.executeProcedure(query,name ,addr,SSN ,salary ,date ,role);
+           boolean result = Utility.executeProcedure(query,name ,addr,SSN ,salary ,date ,role, phone);
 
         } catch (Exception e) {
             throw e;
@@ -49,7 +49,7 @@ public class EmployeeUtil {
     public static void deleteEmployee(Integer empId) throws Exception {
         String query = "Delete from Employee where EmployeeId = " + empId;
         try {
-            ResultSet rs = Utility.execute(query);
+            Utility.update(query);
 
         } catch (Exception e) {
             throw e;

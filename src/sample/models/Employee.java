@@ -18,6 +18,7 @@ public class Employee {
     IntegerProperty salary;
     IntegerProperty SSN;
     StringProperty role;
+    StringProperty phone;
 
     public Employee() {
         this.employeeId = new SimpleIntegerProperty();
@@ -125,5 +126,18 @@ public class Employee {
     public void setRole(String role) {
         this.role.set(role);
     }
+
+    public String getPhone() {
+        return phone.get();
+    }
+
+    public StringProperty phoneProperty() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone.set(phone);
+    }
+
 
 }
