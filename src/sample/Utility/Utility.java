@@ -6,9 +6,9 @@ import java.sql.*;
 
 public class Utility {
 
-    private static String url = "jdbc:mysql://northvirginia-mysql-instance1.celydv4hllua.us-east-1.rds.amazonaws.com:3306/";
-    private static String userName = "Administrator";
-    private static String password = "mydatabase";
+    private static String url = "";
+    private static String userName = "";
+    private static String password = "";
     private static String dbName = "Hospital_Managment_System";
     private static String driver = "com.mysql.jdbc.Driver";
     private static Connection connection = null;
