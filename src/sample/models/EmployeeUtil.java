@@ -37,7 +37,7 @@ public class EmployeeUtil {
     }
 
     public static void addEmployee(String name, String addr, Integer salary, Integer SSN, String date, String role, String phone) throws Exception {
-        String query = "{call Hospital_Managment_System.addEmployee(?,?,?,?,?,?)}";
+        String query = "{call Hospital_Managment_System.addEmployee(?,?,?,?,?,?,?)}";
         try {
            boolean result = Utility.executeProcedure(query,name ,addr,SSN ,salary ,date ,role, phone);
 
